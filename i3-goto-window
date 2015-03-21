@@ -1,13 +1,27 @@
 #!/bin/sh
 # List all windows by title via dmenu, let the user pick a window, then tell i3
-# to focus that window.
+# to focus that window. Any command line parameters will be passed forward to
+# dmenu. Requires dmenu and xdotool. Should be portable bourne shell, if it
+# doesn't run on *BSD or Debian, please report a bug.
 #
 # Written 2015 by Moritz Wilhelmy <mw@barfooze.de>
 #
 # This file is hereby placed in the public domain. There is no warranty.
 
-WIN=$(xdotool search . getwindowname '%@' | grep -ve '^\[i3 con\]' -e '^$' | sort -u |
-	dmenu -p goto |
-	sed 's/[]["'\''.\\ ]/\\&/g')
+# Some default dmenu parameters
+#  -f       -- grab input more quickly, I want to start typing right away
+#  -i       -- case insensitive matching
+#  -p goto  -- set a prompt so that I can distinguish it from dmenu_run
+[ "$#" -eq 0 ] && set -- -f -i -p goto
+
+WIN=$(xdotool search . getwindowname '%@' |
+	grep -v -e '^\[i3 con\]' -e '^$' -e '^i3bar for output' |
+	sort -u |
+	dmenu "$@" |
+	sed 's/[]["'\''.\\ ~()]/\\&/g')
+
+# print a debug message for now, some escape characters that would need to be
+# escaped are still missing from the above sed command
+printf "DEBUG: escaped window title is '%s'\n" "$WIN" >&2
 
 [ -n "$WIN" ] && exec i3-msg "[title=\"$WIN\"] focus"
