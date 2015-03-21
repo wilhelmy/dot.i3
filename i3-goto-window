@@ -1,0 +1,13 @@
+#!/bin/sh
+# List all windows by title via dmenu, let the user pick a window, then tell i3
+# to focus that window.
+#
+# Written 2015 by Moritz Wilhelmy <mw@barfooze.de>
+#
+# This file is hereby placed in the public domain. There is no warranty.
+
+WIN=$(xdotool search . getwindowname '%@' | grep -ve '^\[i3 con\]' -e '^$' | sort -u |
+	dmenu -p goto |
+	sed 's/[]["'\''.\\ ]/\\&/g')
+
+[ -n "$WIN" ] && exec i3-msg "[title=\"$WIN\"] focus"
