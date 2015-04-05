@@ -1,6 +1,10 @@
 # Docs: http://i3wm.org/docs/userguide.html
 
-set $mod Mod4
+set $mod   Mod4
+set $left  h
+set $down  j
+set $up    k
+set $right l
 
 # macro for warping the pointer into the middle of the focused window
 set $warp exec --no-startup-id "xdotool mousemove --window $(xdotool getactivewindow) --polar 0 0"
@@ -14,125 +18,127 @@ font -*-fixed-medium-r-*-*-12-*-*-*-*-*-*-*
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id urxvtcd
+bindsym $mod+Return       exec --no-startup-id urxvtcd
 bindsym $mod+Shift+Return exec --no-startup-id urxvtcd
-bindsym $mod+F12 exec --no-startup-id xlock
+bindsym $mod+F12          exec --no-startup-id xlock
 
 # kill focused window
-bindsym $mod+Shift+c kill
+bindsym $mod+Shift+c      kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec --no-startup-id dmenu_run
+bindsym $mod+p            exec --no-startup-id dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+h focus left;  $warp
-bindsym $mod+j focus down;  $warp
-bindsym $mod+k focus up;    $warp
-bindsym $mod+l focus right; $warp
+bindsym $mod+$left        focus left;  $warp
+bindsym $mod+$down        focus down;  $warp
+bindsym $mod+$up          focus up;    $warp
+bindsym $mod+$right       focus right; $warp
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left;   $warp
-bindsym $mod+Down focus down;   $warp
-bindsym $mod+Up focus up;       $warp
-bindsym $mod+Right focus right; $warp
+bindsym $mod+Left         focus left;  $warp
+bindsym $mod+Down         focus down;  $warp
+bindsym $mod+Up           focus up;    $warp
+bindsym $mod+Right        focus right; $warp
 
 # move focused window
-bindsym $mod+Shift+h move left; $warp
-bindsym $mod+Shift+j move down; $warp
-bindsym $mod+Shift+k move up;   $warp
-bindsym $mod+Shift+l move right;$warp
+bindsym $mod+Shift+$left  move left;   $warp
+bindsym $mod+Shift+$down  move down;   $warp
+bindsym $mod+Shift+$up    move up;     $warp
+bindsym $mod+Shift+$right move right;  $warp
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left;   $warp
-bindsym $mod+Shift+Down move down;   $warp
-bindsym $mod+Shift+Up move up;       $warp
-bindsym $mod+Shift+Right move right; $warp
+bindsym $mod+Shift+Left   move left;   $warp
+bindsym $mod+Shift+Down   move down;   $warp
+bindsym $mod+Shift+Up     move up;     $warp
+bindsym $mod+Shift+Right  move right;  $warp
 
 # split in horizontal orientation
-bindsym $mod+s split h
+bindsym $mod+s            split h
 
 # split in vertical orientation
-bindsym $mod+shift+s split v
+bindsym $mod+shift+s      split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen
+bindsym $mod+f            fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+F1 layout stacking
-bindsym $mod+F2 layout tabbed
-bindsym $mod+F3 layout toggle split
+bindsym $mod+F1           layout stacking
+bindsym $mod+F2           layout tabbed
+bindsym $mod+F3           layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space  floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+space        focus mode_toggle
 
 # focus the parent container
-bindsym $mod+z focus parent
+bindsym $mod+z            focus parent
 
 # focus the child container
-bindsym $mod+x focus child
+bindsym $mod+x            focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1            workspace 1
+bindsym $mod+2            workspace 2
+bindsym $mod+3            workspace 3
+bindsym $mod+4            workspace 4
+bindsym $mod+5            workspace 5
+bindsym $mod+6            workspace 6
+bindsym $mod+7            workspace 7
+bindsym $mod+8            workspace 8
+bindsym $mod+9            workspace 9
+bindsym $mod+0            workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1      move container to workspace 1
+bindsym $mod+Shift+2      move container to workspace 2
+bindsym $mod+Shift+3      move container to workspace 3
+bindsym $mod+Shift+4      move container to workspace 4
+bindsym $mod+Shift+5      move container to workspace 5
+bindsym $mod+Shift+6      move container to workspace 6
+bindsym $mod+Shift+7      move container to workspace 7
+bindsym $mod+Shift+8      move container to workspace 8
+bindsym $mod+Shift+9      move container to workspace 9
+bindsym $mod+Shift+0      move container to workspace 10
 
 # reload the configuration file
-#bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r reload
+bindsym $mod+Shift+r         reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Control+Shift+r restart
+
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e         exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        # Pressing left  will shrink the window’s width.
+        # Pressing right will grow   the window’s width.
+        # Pressing up    will shrink the window’s height.
+        # Pressing down  will grow   the window’s height.
+
+        bindsym $left    resize shrink width  10 px or 10 ppt
+        bindsym $down    resize grow   height 10 px or 10 ppt
+        bindsym $up      resize shrink height 10 px or 10 ppt
+        bindsym $right   resize grow   width  10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left     resize shrink width  10 px or 10 ppt
+        bindsym Down     resize grow   height 10 px or 10 ppt
+        bindsym Up       resize shrink height 10 px or 10 ppt
+        bindsym Right    resize grow   width  10 px or 10 ppt
 
         # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+        bindsym Return   mode "default"
+        bindsym Escape   mode "default"
+        bindsym $mod+r   mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -158,12 +164,16 @@ workspace_layout tabbed
 # hide borders at the screen edges
 hide_edge_borders both
 
-# Gajim to workspace 2
-assign [class="^Gajim$"] → 2
+# Before I forget it again, the command is called xprop(1).
+
+# Messengers to workspace 2
+assign [class="^Gajim$"]        → 2
+assign [class="^Pidgin$"]       → 2
 
 # Browsers to workspace 3
-assign [class="^Opera$"] → 3
-assign [title="^w3m"] → 3
+assign [class="^Opera$"]        → 3
+assign [class="^Firefox$"]      → 3
+assign [title="^w3m"]           → 3
 
 # mark window/goto marked window
 bindsym $mod+m exec "i3-input -F 'mark %s' -l 1 -P 'Mark: '"
